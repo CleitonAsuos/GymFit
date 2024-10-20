@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'cadastro_page.dart';
 
 class Loginpage extends StatelessWidget {
   const Loginpage({super.key});
@@ -172,7 +173,14 @@ class Loginpage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CadastroPage(),
+                      ),
+                    );
+                  },
                 ))
           ],
         ),
