@@ -9,19 +9,7 @@ class CadastroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
         title: Text('Cadastro'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          color: Colors.white,
-          onPressed: () =>
-            Navigator.pop(context, false),
-            ),
-        titleTextStyle: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-    
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -42,15 +30,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 style: TextStyle(color: Colors.white),
@@ -65,20 +47,14 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow), borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                    ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 keyboardType: TextInputType.number,
                 style: TextStyle(color: Colors.white),
               ),
-              
             ),
             SizedBox(height: 10),
             Observer(
@@ -89,15 +65,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 style: TextStyle(color: Colors.white),
@@ -112,15 +82,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 keyboardType: TextInputType.number,
@@ -136,15 +100,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 keyboardType: TextInputType.number,
@@ -163,7 +121,6 @@ class CadastroPage extends StatelessWidget {
                     value: 'Melhorar o condicionamento',
                     groupValue: store.objetivo,
                     onChanged: store.setObjetivo,
-                    activeColor: Colors.yellow,
                   ),
                   RadioListTile(
                     title: Text(
@@ -173,7 +130,6 @@ class CadastroPage extends StatelessWidget {
                     value: 'Ganhar massa muscular',
                     groupValue: store.objetivo,
                     onChanged: store.setObjetivo,
-                    activeColor: Colors.yellow,
                   ),
                   RadioListTile(
                     title: Text(
@@ -183,7 +139,6 @@ class CadastroPage extends StatelessWidget {
                     value: 'Perder peso',
                     groupValue: store.objetivo,
                     onChanged: store.setObjetivo,
-                    activeColor: Colors.yellow,
                   ),
                 ],
               ),
@@ -197,15 +152,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                    ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
@@ -221,15 +170,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 obscureText: true,
@@ -245,15 +188,9 @@ class CadastroPage extends StatelessWidget {
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                    borderSide: BorderSide(color: Colors.blue),
                   ),
                 ),
                 obscureText: true,
@@ -261,33 +198,11 @@ class CadastroPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.grey, Colors.white],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  shadowColor: Colors.transparent,
-                ),
-                onPressed: () {
-                  // Adicione a lógica de cadastro aqui
-                },
-                child: Text(
-                  'Cadastrar',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
+            ElevatedButton(
+              onPressed: () {
+                // Adicione a lógica de cadastro aqui
+              },
+              child: Text('Cadastrar'),
             ),
           ],
         ),
