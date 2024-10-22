@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'cadastro_page.dart';
+import 'recuperar_senha.dart'; // Add this import statement
 
 class Loginpage extends StatelessWidget {
   const Loginpage({super.key});
@@ -27,7 +28,7 @@ class Loginpage extends StatelessWidget {
                 width: 128,
                 height: 128,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(30),
                   child: Image.asset(
                     "assets/images/logo.jpg",
                     fit: BoxFit.cover,
@@ -42,21 +43,21 @@ class Loginpage extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
                     width: 2.0, 
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
                     width: 2.0, // Define a espessura da borda quando não focado
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.white,
                     width: 2.0, // Define a espessura da borda quando focado
@@ -66,7 +67,6 @@ class Loginpage extends StatelessWidget {
                 labelStyle: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
-                  fontSize: 20,
                 ),
               ),
               style: TextStyle(
@@ -82,21 +82,21 @@ class Loginpage extends StatelessWidget {
               obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
                     width: 2.0, // Define a espessura da borda
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
                     width: 2.0, // Define a espessura da borda quando não focado
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.white,
                     width: 2.0, // Define a espessura da borda quando focado
@@ -106,7 +106,6 @@ class Loginpage extends StatelessWidget {
                 labelStyle: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
-                  fontSize: 20,
                 ),
               ),
               style: TextStyle(
@@ -122,11 +121,17 @@ class Loginpage extends StatelessWidget {
                   "Recuperar Senha",
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    fontSize: 14,
                     color: Colors.white,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecuperarSenha(),
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(
@@ -142,7 +147,7 @@ class Loginpage extends StatelessWidget {
                   end: Alignment.topCenter,
                 ),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(25),
+                  Radius.circular(30),
                 ),
               ),
               child: SizedBox.expand(
@@ -152,7 +157,7 @@ class Loginpage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                   onPressed: () => {},
