@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gymfit_projeto/principal_page.dart';
 import 'cadastro_page.dart';
 import 'recuperar_senha.dart'; // Add this import statement
 
@@ -160,7 +161,14 @@ class Loginpage extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  onPressed: () => {},
+                  onPressed: () => {
+                      Navigator.push(
+                    context,
+                     MaterialPageRoute(
+                    builder: (context) => MainPage(),
+                    ),
+                    ),
+                  },
                 ),
               ),
             ),
