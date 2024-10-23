@@ -183,7 +183,7 @@ class MainPage extends StatelessWidget {
           ),
         ],
         selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.yellow[100],
+       unselectedItemColor: Colors.yellow,
         backgroundColor: Colors.black,
         selectedLabelStyle: TextStyle(
           color: Colors.white,
