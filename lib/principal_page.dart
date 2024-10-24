@@ -125,6 +125,97 @@ class MainPage extends StatelessWidget {
                 inactiveColor: Colors.yellow[100],
               ),
             ),
+            SizedBox(height: 20),
+            Center(
+              child: Stack(
+                children: [
+                  // Texto com borda preta
+                  Text(
+                    'Treinos Sugeridos',
+                    style: TextStyle(
+                      fontSize: 18,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 1
+                        ..color = Colors.black,
+                    ),
+                  ),
+                  // Texto amarelo sobreposto
+                  Text(
+                    'Treinos Sugeridos',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.yellow,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/exercicio_house.jpg',
+                      width: 140,
+                      height: 140,
+                    ),
+                    Stack(
+                      children: [
+                        // Texto com borda preta
+                        Text(
+                          'Exercícios em casa',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                        // Texto amarelo sobreposto
+                        Text(
+                          'Exercícios em casa',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(width: 20), // Espaçamento entre as imagens
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/exercicio_gym.jpg',
+                      width: 140,
+                      height: 140,
+                    ),
+                    Stack(
+                      children: [
+                        // Texto com borda preta
+                        Text(
+                          'Exercícios na academia',
+                           style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                          ),
+                        ),
+                        // Texto amarelo sobreposto
+                        Text(
+                          'Exercícios na academia',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.yellow,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -183,7 +274,7 @@ class MainPage extends StatelessWidget {
           ),
         ],
         selectedItemColor: Colors.yellow,
-       unselectedItemColor: Colors.yellow,
+        unselectedItemColor: Colors.yellow,
         backgroundColor: Colors.black,
         selectedLabelStyle: TextStyle(
           color: Colors.white,
