@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'principal_store.dart';
@@ -9,9 +11,17 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GYMFIT'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.white,
+          onPressed: () => Navigator.pop(context, false),
+        ),
+        title: Text("GYMFIT"),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -23,53 +33,52 @@ class MainPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 20),
+            SizedBox(
+              height: 40),
             Center(
               child: Stack(
                 children: [
-                  // Texto com borda preta
                   Text(
+                    textAlign: TextAlign.justify,
                     'Metas',
                     style: TextStyle(
-                      fontSize: 18,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 1
-                        ..color = Colors.black,
-                    ),
-                  ),
-                  // Texto amarelo sobreposto
-                  Text(
-                    'Metas',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.yellow,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Stack(
+                children: [
+                   Text(
+                    textAlign: TextAlign.justify,
+                    "Para definir o seu treino, precisamos saber um pouco mais sobre você.",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                    softWrap: true,
+                    overflow: TextOverflow.clip,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height:40
+              ),
             Center(
               child: Stack(
                 children: [
-                  // Texto com borda preta
                   Text(
                     'Nível de Condicionamento',
                     style: TextStyle(
-                      fontSize: 18,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 1
-                        ..color = Colors.black,
-                    ),
-                  ),
-                  // Texto amarelo sobreposto
-                  Text(
-                    'Nível de Condicionamento',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.yellow,
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -83,31 +92,19 @@ class MainPage extends StatelessWidget {
                 divisions: 2,
                 label: store.nivelCondicionamentoLabel,
                 onChanged: store.setNivelCondicionamento,
-                activeColor: Colors.yellow,
-                inactiveColor: Colors.yellow[100],
+                activeColor: Colors.black,
+                inactiveColor: Colors.white54,
               ),
             ),
             SizedBox(height: 20),
             Center(
               child: Stack(
                 children: [
-                  // Texto com borda preta
                   Text(
                     'Frequência',
                     style: TextStyle(
-                      fontSize: 18,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 1
-                        ..color = Colors.black,
-                    ),
-                  ),
-                  // Texto amarelo sobreposto
-                  Text(
-                    'Frequência',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.yellow,
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -121,31 +118,19 @@ class MainPage extends StatelessWidget {
                 divisions: 2,
                 label: store.frequenciaLabel,
                 onChanged: store.setFrequencia,
-                activeColor: Colors.yellow,
-                inactiveColor: Colors.yellow[100],
+                activeColor: Colors.black,
+                inactiveColor: Colors.white54,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Center(
               child: Stack(
                 children: [
-                  // Texto com borda preta
                   Text(
                     'Treinos Sugeridos',
                     style: TextStyle(
-                      fontSize: 18,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 1
-                        ..color = Colors.black,
-                    ),
-                  ),
-                  // Texto amarelo sobreposto
-                  Text(
-                    'Treinos Sugeridos',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.yellow,
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -162,29 +147,22 @@ class MainPage extends StatelessWidget {
                       width: 140,
                       height: 140,
                     ),
+                    SizedBox(height: 10),
                     Stack(
                       children: [
                         // Texto com borda preta
                         Text(
                           'Exercícios em casa',
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.yellow,
-                          ),
-                        ),
-                        // Texto amarelo sobreposto
-                        Text(
-                          'Exercícios em casa',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.yellow,
+                            fontSize: 14,
+                            color: Colors.white,
                           ),
                         ),
                       ],
                     ),
                   ],
                 ),
-                SizedBox(width: 20), // Espaçamento entre as imagens
+                SizedBox(width: 60), // Espaçamento entre as imagens
                 Column(
                   children: [
                     Image.asset(
@@ -192,22 +170,14 @@ class MainPage extends StatelessWidget {
                       width: 140,
                       height: 140,
                     ),
+                    SizedBox(height: 10),
                     Stack(
                       children: [
-                        // Texto com borda preta
-                        Text(
-                          'Exercícios na academia',
-                           style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black,
-                          ),
-                        ),
-                        // Texto amarelo sobreposto
                         Text(
                           'Exercícios na academia',
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.yellow,
+                            fontSize: 14,
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -232,7 +202,7 @@ class MainPage extends StatelessWidget {
                 Icon(
                   Icons.fitness_center,
                   size: 24,
-                  color: Colors.yellow,
+                  color: Colors.white,
                 ),
               ],
             ),
@@ -249,7 +219,7 @@ class MainPage extends StatelessWidget {
                 Icon(
                   Icons.restaurant,
                   size: 24,
-                  color: Colors.yellow,
+                  color: Colors.white,
                 ),
               ],
             ),
@@ -261,20 +231,20 @@ class MainPage extends StatelessWidget {
                 Icon(
                   Icons.person,
                   size: 24,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
                 Icon(
                   Icons.person,
                   size: 24,
-                  color: Colors.yellow,
+                  color: Colors.white,
                 ),
               ],
             ),
             label: 'Perfil',
           ),
         ],
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.yellow,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
         backgroundColor: Colors.black,
         selectedLabelStyle: TextStyle(
           color: Colors.white,

@@ -45,24 +45,24 @@ RecuperarSenha({super.key});
           ),
           Text(
             "Esqueceu sua senha?",
+            textAlign: TextAlign.justify,
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w500,
               color: Colors.white,
             ),
-            textAlign: TextAlign.justify,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
+            textAlign: TextAlign.justify,
             "Por favor, informe o e-mail associado a sua conta que enviaremos um link com as instruções para recuperação de senha.",
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w400,
               color: Colors.white,
             ),
-            textAlign: TextAlign.justify,
           ),
           SizedBox(
             height: 40,

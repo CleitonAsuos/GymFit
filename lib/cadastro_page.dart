@@ -163,7 +163,7 @@ class CadastroPage extends StatelessWidget {
                     value: 'Melhorar o condicionamento',
                     groupValue: store.objetivo,
                     onChanged: store.setObjetivo,
-                    activeColor: Colors.yellow,
+                    activeColor: Colors.black,
                   ),
                   RadioListTile(
                     title: Text(
@@ -173,7 +173,7 @@ class CadastroPage extends StatelessWidget {
                     value: 'Ganhar massa muscular',
                     groupValue: store.objetivo,
                     onChanged: store.setObjetivo,
-                    activeColor: Colors.yellow,
+                    activeColor: Colors.black,
                   ),
                   RadioListTile(
                     title: Text(
@@ -183,7 +183,7 @@ class CadastroPage extends StatelessWidget {
                     value: 'Perder peso',
                     groupValue: store.objetivo,
                     onChanged: store.setObjetivo,
-                    activeColor: Colors.yellow,
+                    activeColor: Colors.black,
                   ),
                 ],
               ),
