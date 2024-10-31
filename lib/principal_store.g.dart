@@ -42,6 +42,22 @@ mixin _$MainStore on _MainStore, Store {
     });
   }
 
+  late final _$objetivoAtom =
+      Atom(name: '_MainStore.objetivo', context: context);
+
+  @override
+  String get objetivo {
+    _$objetivoAtom.reportRead();
+    return super.objetivo;
+  }
+
+  @override
+  set objetivo(String value) {
+    _$objetivoAtom.reportWrite(value, super.objetivo, () {
+      super.objetivo = value;
+    });
+  }
+
   late final _$frequenciaAtom =
       Atom(name: '_MainStore.frequencia', context: context);
 
@@ -84,9 +100,21 @@ mixin _$MainStore on _MainStore, Store {
   }
 
   @override
+  void setObjetivo(String? value) {
+    final _$actionInfo = _$_MainStoreActionController.startAction(
+        name: '_MainStore.setObjetivo');
+    try {
+      return super.setObjetivo(value);
+    } finally {
+      _$_MainStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 nivelCondicionamento: ${nivelCondicionamento},
+objetivo: ${objetivo},
 frequencia: ${frequencia},
 nivelCondicionamentoLabel: ${nivelCondicionamentoLabel},
 frequenciaLabel: ${frequenciaLabel}

@@ -173,7 +173,7 @@ mixin _$CadastroStore on _CadastroStore, Store {
   }
 
   @override
-  void setSexo(String value) {
+  void setSexo(String? value) {
     final _$actionInfo = _$_CadastroStoreActionController.startAction(
         name: '_CadastroStore.setSexo');
     try {
@@ -206,7 +206,7 @@ mixin _$CadastroStore on _CadastroStore, Store {
   }
 
   @override
-  void setObjetivo(String? value) {
+  void setObjetivo(String value) {
     final _$actionInfo = _$_CadastroStoreActionController.startAction(
         name: '_CadastroStore.setObjetivo');
     try {

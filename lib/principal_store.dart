@@ -9,6 +9,9 @@ abstract class _MainStore with Store {
   double nivelCondicionamento = 0;
 
   @observable
+  String objetivo = '';
+
+  @observable
   double frequencia = 0;
 
   @computed
@@ -48,4 +51,13 @@ abstract class _MainStore with Store {
   void setFrequencia(double value) {
     frequencia = value;
   }
+
+   @action
+  void setObjetivo(String? value) {
+    if (value != null) {
+      objetivo = value;
+    }
+  }
 }
+
+

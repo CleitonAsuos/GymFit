@@ -14,14 +14,12 @@ class CadastroPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
-          onPressed: () =>
-            Navigator.pop(context, false),
-            ),
+          onPressed: () => Navigator.pop(context, false),
+        ),
         titleTextStyle: TextStyle(
           color: Colors.white,
           fontSize: 16,
         ),
-    
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
@@ -43,14 +41,14 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.yellow),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                 ),
                 style: TextStyle(color: Colors.white),
@@ -66,44 +64,48 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow), borderRadius: BorderRadius.all(
-                  Radius.circular(30),
+                    borderSide: BorderSide(color: Colors.yellow),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
                     ),
                   ),
                 ),
                 keyboardType: TextInputType.number,
                 style: TextStyle(color: Colors.white),
               ),
-              
             ),
             SizedBox(height: 10),
             Observer(
-              builder: (_) => TextField(
-                onChanged: store.setSexo,
-                decoration: InputDecoration(
-                  labelText: 'Sexo',
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
+              builder: (_) => Column(
+                children: [
+                  RadioListTile<String>(
+                    title: const Text(
+                      'Masculino',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    value: 'Masculino',
+                    groupValue: store.sexo,
+                    onChanged: store.setSexo,
+                    activeColor: Colors.white, // Cor branca quando selecionado
                   ),
+                  RadioListTile<String>(
+                    title: const Text(
+                      'Feminino',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    value: 'Feminino',
+                    groupValue: store.sexo,
+                    onChanged: store.setSexo,
+                    activeColor: Colors.white, // Cor branca quando selecionado
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
-                  ),
-                ),
-                style: TextStyle(color: Colors.white),
+                ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Observer(
               builder: (_) => TextField(
                 onChanged: (value) => store.setPeso(double.parse(value)),
@@ -113,14 +115,14 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.yellow),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                 ),
                 keyboardType: TextInputType.number,
@@ -137,14 +139,14 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.yellow),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                 ),
                 keyboardType: TextInputType.number,
@@ -152,42 +154,7 @@ class CadastroPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Observer(
-              builder: (_) => Column(
-                children: [
-                  RadioListTile(
-                    title: Text(
-                      'Melhorar o condicionamento',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    value: 'Melhorar o condicionamento',
-                    groupValue: store.objetivo,
-                    onChanged: store.setObjetivo,
-                    activeColor: Colors.black,
-                  ),
-                  RadioListTile(
-                    title: Text(
-                      'Ganhar massa muscular',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    value: 'Ganhar massa muscular',
-                    groupValue: store.objetivo,
-                    onChanged: store.setObjetivo,
-                    activeColor: Colors.black,
-                  ),
-                  RadioListTile(
-                    title: Text(
-                      'Perder peso',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    value: 'Perder peso',
-                    groupValue: store.objetivo,
-                    onChanged: store.setObjetivo,
-                    activeColor: Colors.black,
-                  ),
-                ],
-              ),
-            ),
+            // até aqui
             SizedBox(height: 10),
             Observer(
               builder: (_) => TextField(
@@ -198,13 +165,13 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.yellow),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
+                      Radius.circular(30),
                     ),
                   ),
                 ),
@@ -222,14 +189,14 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.yellow),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                 ),
                 obscureText: true,
@@ -246,21 +213,21 @@ class CadastroPage extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.yellow),
                     borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                  ),
+                      Radius.circular(30),
+                    ),
                   ),
                 ),
                 obscureText: true,
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 61),
             Container(
               width: double.infinity,
               height: 50,
@@ -272,15 +239,18 @@ class CadastroPage extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(30),
               ),
+              
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   shadowColor: Colors.transparent,
                 ),
+                
                 onPressed: () {
                   // Adicione a lógica de cadastro aqui
                 },
-                child: Text(
+                
+                child: const Text(
                   'Cadastrar',
                   style: TextStyle(
                     color: Colors.black,

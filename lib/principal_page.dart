@@ -33,8 +33,7 @@ class MainPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
-              height: 40),
+            SizedBox(height: 40),
             Center(
               child: Stack(
                 children: [
@@ -54,7 +53,7 @@ class MainPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Stack(
                 children: [
-                   Text(
+                  Text(
                     textAlign: TextAlign.justify,
                     "Para definir o seu treino, precisamos saber um pouco mais sobre você.",
                     style: TextStyle(
@@ -68,9 +67,7 @@ class MainPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height:40
-              ),
+            SizedBox(height: 40),
             Center(
               child: Stack(
                 children: [
@@ -122,7 +119,51 @@ class MainPage extends StatelessWidget {
                 inactiveColor: Colors.white54,
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 2),
+            Text(
+              'Objetivo',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+            Observer(
+              builder: (_) => Column(
+                children: [
+                  RadioListTile<String>(
+                    title: const Text(
+                      'Melhorar o condicionamento',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    value: 'Melhorar o condicionamento',
+                    groupValue: store.objetivo,
+                    onChanged: store.setObjetivo,
+                    activeColor: Colors.white, // Cor branca quando selecionado
+                  ),
+                  RadioListTile<String>(
+                    title: const Text(
+                      'Ganhar massa muscular',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    value: 'Ganhar massa muscular',
+                    groupValue: store.objetivo,
+                    onChanged: store.setObjetivo,
+                    activeColor: Colors.white, // Cor branca quando selecionado
+                  ),
+                  RadioListTile<String>(
+                    title: const Text(
+                      'Perder peso',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    value: 'Perder peso',
+                    groupValue: store.objetivo,
+                    onChanged: store.setObjetivo,
+                    activeColor: Colors.white, // Cor branca quando selecionado
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 40),
             Center(
               child: Stack(
                 children: [
@@ -137,55 +178,6 @@ class MainPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/exercicio_house.jpg',
-                      width: 140,
-                      height: 140,
-                    ),
-                    SizedBox(height: 10),
-                    Stack(
-                      children: [
-                        // Texto com borda preta
-                        Text(
-                          'Exercícios em casa',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(width: 60), // Espaçamento entre as imagens
-                Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/exercicio_gym.jpg',
-                      width: 140,
-                      height: 140,
-                    ),
-                    SizedBox(height: 10),
-                    Stack(
-                      children: [
-                        Text(
-                          'Exercícios na academia',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
           ],
         ),
       ),

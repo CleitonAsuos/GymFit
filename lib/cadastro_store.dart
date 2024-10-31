@@ -39,7 +39,7 @@ abstract class _CadastroStore with Store {
   void setIdade(int value) => idade = value;
 
   @action
-  void setSexo(String value) => sexo = value;
+  void setSexo(String? value) => sexo = value!;
 
   @action
   void setPeso(double value) => peso = value;
@@ -48,11 +48,7 @@ abstract class _CadastroStore with Store {
   void setAltura(double value) => altura = value;
 
   @action
-  void setObjetivo(String? value) {
-    if (value != null) {
-      objetivo = value;
-    }
-  }
+  void setObjetivo(String value) => objetivo = value;
 
   @action
   void setEmail(String value) => email = value;
