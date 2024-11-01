@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'principal_store.dart';
@@ -33,7 +31,7 @@ class MainPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             Center(
               child: Stack(
                 children: [
@@ -41,7 +39,7 @@ class MainPage extends StatelessWidget {
                     textAlign: TextAlign.justify,
                     'Metas',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
@@ -55,7 +53,7 @@ class MainPage extends StatelessWidget {
                 children: [
                   Text(
                     textAlign: TextAlign.justify,
-                    "Para definir o seu treino, precisamos saber um pouco mais sobre você.",
+                    "Defina suas metas para que possamos montar uma divisão de treino adequada para você.",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -119,65 +117,120 @@ class MainPage extends StatelessWidget {
                 inactiveColor: Colors.white54,
               ),
             ),
-            SizedBox(height: 2),
+            SizedBox(height: 20),
             Text(
               'Objetivo',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 color: Colors.white,
               ),
             ),
+            SizedBox(
+              height: 20
+              ),
             Observer(
-              builder: (_) => Column(
+              builder: (_) => Theme(
+              data: Theme.of(context).copyWith(
+                unselectedWidgetColor: Colors.white,
+              ),
+              child: Column(
                 children: [
-                  RadioListTile<String>(
-                    title: const Text(
-                      'Melhorar o condicionamento',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    value: 'Melhorar o condicionamento',
-                    groupValue: store.objetivo,
-                    onChanged: store.setObjetivo,
-                    activeColor: Colors.white, // Cor branca quando selecionado
+                CheckboxListTile(
+                  side: BorderSide(
+                    color: Colors.white30,
+                    width: 2,
                   ),
-                  RadioListTile<String>(
-                    title: const Text(
-                      'Ganhar massa muscular',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    value: 'Ganhar massa muscular',
-                    groupValue: store.objetivo,
-                    onChanged: store.setObjetivo,
-                    activeColor: Colors.white, // Cor branca quando selecionado
+                  title: const Text(
+                  'Melhorar o condicionamento',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white),
                   ),
-                  RadioListTile<String>(
-                    title: const Text(
-                      'Perder peso',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    value: 'Perder peso',
-                    groupValue: store.objetivo,
-                    onChanged: store.setObjetivo,
-                    activeColor: Colors.white, // Cor branca quando selecionado
+                  value: store.objetivo.contains('Melhorar o condicionamento'),
+                  onChanged: (bool? value) {
+                  store.setObjetivo('Melhorar o condicionamento',);
+                  },
+                  activeColor: Colors.white,
+                  checkColor: Colors.black,
+                  controlAffinity: ListTileControlAffinity.leading, // Checkbox à esquerda
+                ),
+                CheckboxListTile(
+                  side: BorderSide(
+                    color: Colors.white30,
+                    width: 2,
                   ),
+                  title: const Text(
+                  'Ganhar massa muscular',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white),
+                  ),
+                  value: store.objetivo.contains('Ganhar massa muscular'),
+                  onChanged: (bool? value) {
+                  store.setObjetivo('Ganhar massa muscular',);
+                  },
+                  activeColor: Colors.white,
+                  checkColor: Colors.black,
+                  controlAffinity: ListTileControlAffinity.leading, // Checkbox à esquerda
+                ),
+                CheckboxListTile(
+                  side: BorderSide(
+                    color: Colors.white30,
+                    width: 2,
+                  ),
+                  title: const Text(
+                  'Perder peso',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white),
+                  ),
+                  value: store.objetivo.contains('Perder peso'),
+                  onChanged: (bool? value) {
+                  store.setObjetivo('Perder peso',);
+                  },
+                  activeColor: Colors.white,
+                  checkColor: Colors.black,
+                  controlAffinity: ListTileControlAffinity.leading, // Checkbox à esquerda
+                ),
                 ],
               ),
-            ),
-            const SizedBox(height: 40),
-            Center(
-              child: Stack(
-                children: [
-                  Text(
-                    'Treinos Sugeridos',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(
+              height: 50
+              ),
+
+            Container(
+              width: 200,
+              height: 50,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.grey, Colors.white],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                ),
+                onPressed: () {
+                  // Adicione a lógica de cadastro aqui
+                },
+                child: const Text(
+                  'Continuar',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
@@ -245,6 +298,6 @@ class MainPage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-    );
+    );	
   }
 }
