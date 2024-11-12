@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:gymfit_projeto/exercicio_page.dart';
 import 'principal_store.dart';
 
 class MainPage extends StatelessWidget {
@@ -125,81 +126,80 @@ class MainPage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            SizedBox(
-              height: 20
-              ),
+            SizedBox(height: 20),
             Observer(
               builder: (_) => Theme(
-              data: Theme.of(context).copyWith(
-                unselectedWidgetColor: Colors.white,
-              ),
-              child: Column(
-                children: [
-                CheckboxListTile(
-                  side: BorderSide(
-                    color: Colors.white30,
-                    width: 2,
-                  ),
-                  title: const Text(
-                  'Melhorar o condicionamento',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white),
-                  ),
-                  value: store.objetivo.contains('Melhorar o condicionamento'),
-                  onChanged: (bool? value) {
-                  store.setObjetivo('Melhorar o condicionamento',);
-                  },
-                  activeColor: Colors.white,
-                  checkColor: Colors.black,
-                  controlAffinity: ListTileControlAffinity.leading, // Checkbox à esquerda
+                data: Theme.of(context).copyWith(
+                  unselectedWidgetColor: Colors.white,
                 ),
-                CheckboxListTile(
-                  side: BorderSide(
-                    color: Colors.white30,
-                    width: 2,
-                  ),
-                  title: const Text(
-                  'Ganhar massa muscular',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white),
-                  ),
-                  value: store.objetivo.contains('Ganhar massa muscular'),
-                  onChanged: (bool? value) {
-                  store.setObjetivo('Ganhar massa muscular',);
-                  },
-                  activeColor: Colors.white,
-                  checkColor: Colors.black,
-                  controlAffinity: ListTileControlAffinity.leading, // Checkbox à esquerda
+                child: Column(
+                  children: [
+                    CheckboxListTile(
+                      side: BorderSide(
+                        color: Colors.white30,
+                        width: 2,
+                      ),
+                      title: const Text(
+                        'Melhorar o condicionamento',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      value:
+                          store.objetivo.contains('Melhorar o condicionamento'),
+                      onChanged: (bool? value) {
+                        store.setObjetivo(
+                          'Melhorar o condicionamento',
+                        );
+                      },
+                      activeColor: Colors.white,
+                      checkColor: Colors.black,
+                      controlAffinity: ListTileControlAffinity
+                          .leading, // Checkbox à esquerda
+                    ),
+                    CheckboxListTile(
+                      side: BorderSide(
+                        color: Colors.white30,
+                        width: 2,
+                      ),
+                      title: const Text(
+                        'Ganhar massa muscular',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      value: store.objetivo.contains('Ganhar massa muscular'),
+                      onChanged: (bool? value) {
+                        store.setObjetivo(
+                          'Ganhar massa muscular',
+                        );
+                      },
+                      activeColor: Colors.white,
+                      checkColor: Colors.black,
+                      controlAffinity: ListTileControlAffinity
+                          .leading, // Checkbox à esquerda
+                    ),
+                    CheckboxListTile(
+                      side: BorderSide(
+                        color: Colors.white30,
+                        width: 2,
+                      ),
+                      title: const Text(
+                        'Perder peso',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      value: store.objetivo.contains('Perder peso'),
+                      onChanged: (bool? value) {
+                        store.setObjetivo(
+                          'Perder peso',
+                        );
+                      },
+                      activeColor: Colors.white,
+                      checkColor: Colors.black,
+                      controlAffinity: ListTileControlAffinity
+                          .leading, // Checkbox à esquerda
+                    ),
+                  ],
                 ),
-                CheckboxListTile(
-                  side: BorderSide(
-                    color: Colors.white30,
-                    width: 2,
-                  ),
-                  title: const Text(
-                  'Perder peso',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white),
-                  ),
-                  value: store.objetivo.contains('Perder peso'),
-                  onChanged: (bool? value) {
-                  store.setObjetivo('Perder peso',);
-                  },
-                  activeColor: Colors.white,
-                  checkColor: Colors.black,
-                  controlAffinity: ListTileControlAffinity.leading, // Checkbox à esquerda
-                ),
-                ],
-              ),
               ),
             ),
-            const SizedBox(
-              height: 50
-              ),
-
+            const SizedBox(height: 50),
             Container(
               width: 200,
               height: 50,
@@ -217,7 +217,22 @@ class MainPage extends StatelessWidget {
                   shadowColor: Colors.transparent,
                 ),
                 onPressed: () {
-                  // Adicione a lógica de cadastro aqui
+                  // Acessar os valores dos sliders e checkboxes
+                  double nivelCondicionamento = store.nivelCondicionamento;
+                  double frequencia = store.frequencia;
+                  String objetivo = store.objetivo;
+
+                  // Navegar para a ExercicioPage passando os valores
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExercicioPage(
+                        nivelCondicionamento: nivelCondicionamento,
+                        frequencia: frequencia,
+                        objetivo: objetivo,
+                      ),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Continuar',
@@ -229,7 +244,8 @@ class MainPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height:
+                  18, //20 coloquei 18 pois estava dando o erro: "bottom overflowed by 1.3 pixels"
             ),
           ],
         ),
@@ -298,6 +314,6 @@ class MainPage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-    );	
+    );
   }
 }
