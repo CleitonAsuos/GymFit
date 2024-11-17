@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:gymfit_projeto/alimentacao_page.dart';
 import 'package:gymfit_projeto/exercicio_page.dart';
 import 'principal_store.dart';
 
@@ -140,14 +141,14 @@ class MainPage extends StatelessWidget {
                         width: 2,
                       ),
                       title: const Text(
-                        'Melhorar o condicionamento',
+                        'Melhorar condicionamento',
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                       value:
-                          store.objetivo.contains('Melhorar o condicionamento'),
+                          store.objetivo.contains('Melhorar condicionamento'),
                       onChanged: (bool? value) {
                         store.setObjetivo(
-                          'Melhorar o condicionamento',
+                          'Melhorar condicionamento',
                         );
                       },
                       activeColor: Colors.white,
@@ -307,12 +308,33 @@ class MainPage extends StatelessWidget {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.black,
-        selectedLabelStyle: TextStyle(
+        selectedLabelStyle: const TextStyle(
           color: Colors.white,
         ),
-        unselectedLabelStyle: TextStyle(
+        unselectedLabelStyle: const TextStyle(
           color: Colors.white,
         ),
+        onTap: (index) {
+          if (index == 1) {
+            if (store.objetivo.isNotEmpty) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      AlimentacaoPage(objetivo: store.objetivo),
+                ),
+              );
+            } else {
+              // Mostrar uma mensagem de erro ou alerta
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                      'Por favor, selecione um objetivo antes de continuar.'),
+                ),
+              );
+            }
+          }
+        },
       ),
     );
   }
