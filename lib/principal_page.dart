@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gymfit_projeto/alimentacao_page.dart';
 import 'package:gymfit_projeto/exercicio_page.dart';
+import 'package:gymfit_projeto/perfil_page.dart';
 import 'principal_store.dart';
 
 class MainPage extends StatelessWidget {
@@ -320,19 +321,31 @@ class MainPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      AlimentacaoPage(objetivo: store.objetivo),
+                  builder: (context) => AlimentacaoPage(objetivo: store.objetivo),
                 ),
               );
             } else {
               // Mostrar uma mensagem de erro ou alerta
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text(
-                      'Por favor, selecione um objetivo antes de continuar.'),
+                  content: Text('Por favor, selecione um objetivo antes de continuar.'),
                 ),
               );
             }
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PerfilPage(
+                  nome: 'Nome Exemplo', // Substitua pelos dados reais
+                  idade: 25, // Substitua pelos dados reais
+                  sexo: 'Masculino', // Substitua pelos dados reais
+                  peso: 70.0, // Substitua pelos dados reais
+                  altura: 1.75, // Substitua pelos dados reais
+                  objetivo: store.objetivo, // Use o objetivo do store
+                ),
+              ),
+            );
           }
         },
       ),
