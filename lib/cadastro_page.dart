@@ -25,7 +25,7 @@ class CadastroPage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.indigo,Colors.black],
+            colors: [Colors.indigo,const Color.fromARGB(255, 0, 5, 55)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -91,7 +91,7 @@ class CadastroPage extends StatelessWidget {
                       if (states.contains(WidgetState.selected)) {
                         return Colors.blueAccent.shade100;
                       }
-                      return Colors.grey;
+                      return Colors.white60;
                     }),
                     value: 'Masculino',
                     groupValue: store.sexo,
@@ -107,7 +107,7 @@ class CadastroPage extends StatelessWidget {
                       if (states.contains(WidgetState.selected)) {
                         return Colors.blueAccent.shade100;
                       }
-                      return Colors.grey;
+                      return Colors.white60;
                     }),
                     value: 'Feminino',
                     groupValue: store.sexo,

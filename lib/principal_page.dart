@@ -27,7 +27,7 @@ class MainPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.indigo,Colors.black],
+            colors: [Colors.indigo, const Color.fromARGB(255, 0, 5, 55)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -91,7 +91,7 @@ class MainPage extends StatelessWidget {
                 label: store.nivelCondicionamentoLabel,
                 onChanged: store.setNivelCondicionamento,
                 activeColor: Colors.blueAccent.shade100,
-                inactiveColor: Colors.white54,
+                inactiveColor: Colors.white60,
               ),
             ),
             SizedBox(height: 20),
@@ -117,7 +117,7 @@ class MainPage extends StatelessWidget {
                 label: store.frequenciaLabel,
                 onChanged: store.setFrequencia,
                 activeColor: Colors.blueAccent.shade100,
-                inactiveColor: Colors.white54,
+                inactiveColor: Colors.white60,
               ),
             ),
             SizedBox(height: 20),
@@ -142,7 +142,7 @@ class MainPage extends StatelessWidget {
                       if (states.contains(WidgetState.selected)) {
                         return Colors.blueAccent.shade100;
                       }
-                      return Colors.grey;
+                      return Colors.white60;
                     }),
                     value: 'Melhorar condicionamento',
                     groupValue: store.objetivo,
@@ -160,7 +160,7 @@ class MainPage extends StatelessWidget {
                       if (states.contains(WidgetState.selected)) {
                         return Colors.blueAccent.shade100;
                       }
-                      return Colors.grey;
+                      return Colors.white60;
                     }),
                     value: 'Ganhar massa muscular',
                     groupValue: store.objetivo,
@@ -178,7 +178,7 @@ class MainPage extends StatelessWidget {
                       if (states.contains(WidgetState.selected)) {
                         return Colors.blueAccent.shade100;
                       }
-                      return Colors.grey;
+                      return Colors.white60;
                     }),
                     value: 'Perder peso',
                     groupValue: store.objetivo,
