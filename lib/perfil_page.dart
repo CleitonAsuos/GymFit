@@ -38,7 +38,7 @@ class PerfilPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.grey, Colors.black87],
+            colors: [Colors.indigo,Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

@@ -25,7 +25,7 @@ class CadastroPage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.grey, Colors.black87],
+            colors: [Colors.indigo,Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -45,7 +45,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -68,7 +68,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -87,6 +87,12 @@ class CadastroPage extends StatelessWidget {
                       'Masculino',
                       style: TextStyle(color: Colors.white),
                     ),
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return Colors.blueAccent.shade100;
+                      }
+                      return Colors.grey;
+                    }),
                     value: 'Masculino',
                     groupValue: store.sexo,
                     onChanged: store.setSexo,
@@ -97,6 +103,12 @@ class CadastroPage extends StatelessWidget {
                       'Feminino',
                       style: TextStyle(color: Colors.white),
                     ),
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return Colors.blueAccent.shade100;
+                      }
+                      return Colors.grey;
+                    }),
                     value: 'Feminino',
                     groupValue: store.sexo,
                     onChanged: store.setSexo,
@@ -119,7 +131,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -143,7 +155,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -169,7 +181,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -193,7 +205,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
@@ -217,7 +229,7 @@ class CadastroPage extends StatelessWidget {
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.yellow),
+                    borderSide: BorderSide(color: Colors.blueAccent.shade100),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),

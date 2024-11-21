@@ -27,7 +27,7 @@ class MainPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.grey, Colors.black87],
+            colors: [Colors.indigo,Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -90,7 +90,7 @@ class MainPage extends StatelessWidget {
                 divisions: 2,
                 label: store.nivelCondicionamentoLabel,
                 onChanged: store.setNivelCondicionamento,
-                activeColor: Colors.black,
+                activeColor: Colors.blueAccent.shade100,
                 inactiveColor: Colors.white54,
               ),
             ),
@@ -116,7 +116,7 @@ class MainPage extends StatelessWidget {
                 divisions: 2,
                 label: store.frequenciaLabel,
                 onChanged: store.setFrequencia,
-                activeColor: Colors.black,
+                activeColor: Colors.blueAccent.shade100,
                 inactiveColor: Colors.white54,
               ),
             ),
@@ -130,73 +130,63 @@ class MainPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Observer(
-              builder: (_) => Theme(
-                data: Theme.of(context).copyWith(
-                  unselectedWidgetColor: Colors.white,
-                ),
+              builder: (_) => Container(
                 child: Column(
                   children: [
-                    CheckboxListTile(
-                      side: BorderSide(
-                        color: Colors.white30,
-                        width: 2,
-                      ),
-                      title: const Text(
-                        'Melhorar condicionamento',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                      value:
-                          store.objetivo.contains('Melhorar condicionamento'),
-                      onChanged: (bool? value) {
-                        store.setObjetivo(
-                          'Melhorar condicionamento',
-                        );
-                      },
-                      activeColor: Colors.white,
-                      checkColor: Colors.black,
-                      controlAffinity: ListTileControlAffinity
-                          .leading, // Checkbox à esquerda
+                  RadioListTile<String>(
+                    title: const Text(
+                    'Melhorar condicionamento',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
-                    CheckboxListTile(
-                      side: BorderSide(
-                        color: Colors.white30,
-                        width: 2,
-                      ),
-                      title: const Text(
-                        'Ganhar massa muscular',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                      value: store.objetivo.contains('Ganhar massa muscular'),
-                      onChanged: (bool? value) {
-                        store.setObjetivo(
-                          'Ganhar massa muscular',
-                        );
-                      },
-                      activeColor: Colors.white,
-                      checkColor: Colors.black,
-                      controlAffinity: ListTileControlAffinity
-                          .leading, // Checkbox à esquerda
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return Colors.blueAccent.shade100;
+                      }
+                      return Colors.grey;
+                    }),
+                    value: 'Melhorar condicionamento',
+                    groupValue: store.objetivo,
+                    onChanged: (String? value) {
+                    store.setObjetivo(value!);
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
+                  RadioListTile<String>(
+                    title: const Text(
+                    'Ganhar massa muscular',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
-                    CheckboxListTile(
-                      side: BorderSide(
-                        color: Colors.white30,
-                        width: 2,
-                      ),
-                      title: const Text(
-                        'Perder peso',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                      value: store.objetivo.contains('Perder peso'),
-                      onChanged: (bool? value) {
-                        store.setObjetivo(
-                          'Perder peso',
-                        );
-                      },
-                      activeColor: Colors.white,
-                      checkColor: Colors.black,
-                      controlAffinity: ListTileControlAffinity
-                          .leading, // Checkbox à esquerda
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return Colors.blueAccent.shade100;
+                      }
+                      return Colors.grey;
+                    }),
+                    value: 'Ganhar massa muscular',
+                    groupValue: store.objetivo,
+                    onChanged: (String? value) {
+                    store.setObjetivo(value!);
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
+                  RadioListTile<String>(
+                    title: const Text(
+                    'Perder peso',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return Colors.blueAccent.shade100;
+                      }
+                      return Colors.grey;
+                    }),
+                    value: 'Perder peso',
+                    groupValue: store.objetivo,
+                    onChanged: (String? value) {
+                    store.setObjetivo(value!);
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
                   ],
                 ),
               ),
@@ -232,6 +222,7 @@ class MainPage extends StatelessWidget {
                         nivelCondicionamento: nivelCondicionamento,
                         frequencia: frequencia,
                         objetivo: objetivo,
+                        nivelCondicionamentoTexto: store.nivelCondicionamentoLabel,
                       ),
                     ),
                   );

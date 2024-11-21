@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gymfit_projeto/principal_page.dart';
 import 'cadastro_page.dart';
+import 'principal_page.dart'; // Add this import statement
 import 'recuperar_senha.dart'; // Add this import statement
 
 class Loginpage extends StatelessWidget {
@@ -17,7 +18,7 @@ class Loginpage extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.grey, Colors.black87],
+            colors: [Colors.indigo,Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -47,7 +48,7 @@ class Loginpage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
-                    width: 2.0, 
+                    width: 2.0,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
@@ -162,11 +163,11 @@ class Loginpage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () => {
-                      Navigator.push(
-                    context,
-                     MaterialPageRoute(
-                    builder: (context) => MainPage(),
-                    ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainPage(),
+                      ),
                     ),
                   },
                 ),

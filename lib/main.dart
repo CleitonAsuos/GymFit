@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'GymFit',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.indigo,
       ),
       home: Loginpage(),
     );

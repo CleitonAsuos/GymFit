@@ -12,6 +12,7 @@ class ExercicioPage extends StatelessWidget {
     required this.nivelCondicionamento,
     required this.frequencia,
     required this.objetivo,
+    required String nivelCondicionamentoTexto,
   }) : super(key: key);
 
   @override
@@ -70,7 +71,7 @@ class ExercicioPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.grey, Colors.black87],
+            colors: [Colors.indigo, Colors.black],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
