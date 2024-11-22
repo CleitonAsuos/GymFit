@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gymfit_projeto/alimentacao_page.dart';
 import 'package:gymfit_projeto/exercicio_page.dart';
+import 'package:gymfit_projeto/login_page.dart';
 import 'package:gymfit_projeto/perfil_page.dart';
 import 'principal_store.dart';
 
-class MainPage extends StatelessWidget {
+class PrincipalPage extends StatelessWidget {
   final MainStore store = MainStore();
 
   @override
@@ -16,7 +17,12 @@ class MainPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
-          onPressed: () => Navigator.pop(context, false),
+          onPressed: () {
+             Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Loginpage()),
+            );
+          },
         ),
         title: Text("GYMFIT"),
         titleTextStyle: TextStyle(

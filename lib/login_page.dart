@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gymfit_projeto/principal_page.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'cadastro_page.dart';
-import 'principal_page.dart'; // Add this import statement
-import 'recuperar_senha.dart'; // Add this import statement
+import 'principal_page.dart';
+import 'recuperar_senha.dart';
+import 'login_store.dart';
 
 class Loginpage extends StatelessWidget {
-  const Loginpage({super.key});
+  final LoginStore store = LoginStore();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class Loginpage extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.indigo,const Color.fromARGB(255, 0, 5, 55)],
+            colors: [Colors.indigo, const Color.fromARGB(255, 0, 5, 55)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -41,161 +42,154 @@ class Loginpage extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
+            Observer(
+              builder: (_) => TextField(
+                onChanged: store.setEmail,
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.white),
+                  errorText: store.email.isEmpty ? 'Email não pode ser vazio' : null,
+                  filled: true,
+                  fillColor: Colors.transparent,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.blueAccent.shade100,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
                   ),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0, // Define a espessura da borda quando não focado
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0, // Define a espessura da borda quando focado
-                  ),
-                ),
-                labelText: "E-mail",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+                style: TextStyle(color: Colors.white),
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 20,
             ),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0, // Define a espessura da borda
+             Observer(
+              builder: (_) => TextField(
+                onChanged: store.setPassword,
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  labelStyle: TextStyle(color: Colors.white),
+                  errorText: store.password.isEmpty ? 'Senha não pode ser vazia' : null,
+                  filled: true,
+                  fillColor: Colors.transparent,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.blueAccent.shade100,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 2.0,
+                    ),
                   ),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0, // Define a espessura da borda quando não focado
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0, // Define a espessura da borda quando focado
-                  ),
-                ),
-                labelText: "Senha",
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+                obscureText: true,
+                style: TextStyle(color: Colors.white),
               ),
             ),
-            Container(
-              height: 40,
+            Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                child: Text(
-                  "Recuperar Senha",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+              onPressed: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RecuperarSenha()),
+                );
+              },
+              child: Text(
+                'Esqueceu a senha?',
+                style: TextStyle(
+                color: Colors.white,
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RecuperarSenha(),
-                    ),
-                  );
-                },
+              ),
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
-            Container(
-              height: 60,
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.white, Colors.grey],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
+            Observer(
+              builder: (_) => Container(
+                height: 60,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.white, Colors.grey],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
-              ),
-              child: SizedBox.expand(
-                child: TextButton(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainPage(),
-                      ),
-                    ),
-                  },
+                  onPressed: store.isLoading ? null : () => store.login(context),
+                  child: store.isLoading
+                      ? CircularProgressIndicator()
+                      : Center(
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
                 ),
               ),
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-                height: 40,
-                child: TextButton(
-                  child: Text(
-                    "Cadastre-se",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CadastroPage(),
-                      ),
-                    );
-                  },
-                ))
+            Align(
+              alignment: Alignment.center,
+              child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CadastroPage()),
+                );
+              },
+              child: Text(
+                'Cadastre-se',
+                style: TextStyle(
+                color: Colors.white,
+                ),
+              ),
+              ),
+            ),
           ],
         ),
       ),
