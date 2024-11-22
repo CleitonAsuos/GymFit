@@ -62,7 +62,7 @@ class ExercicioPage extends StatelessWidget {
           color: Colors.white,
           onPressed: () => Navigator.pop(context, false),
         ),
-        title: const Text("Exercícios"),
+        title: const Text("Divisão de Treino"),
         titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 16,
