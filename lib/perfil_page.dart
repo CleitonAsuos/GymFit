@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gymfit_projeto/exercicio_page.dart';
 import 'alimentacao_page.dart';
 
 class PerfilPage extends StatelessWidget {
@@ -191,7 +192,17 @@ class PerfilPage extends StatelessWidget {
         backgroundColor: Colors.black,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ExercicioPage(
+                  nivelCondicionamento: 2.0, // Replace with actual data
+                  frequencia: 3.0, // Replace with actual data
+                  objetivo: objetivo,
+                  nivelCondicionamentoTexto: 'Intermediário', // Replace with actual data
+                ),
+              ),
+            );
           } else if (index == 1) {
             if (objetivo.isNotEmpty) {
               Navigator.push(
@@ -205,7 +216,14 @@ class PerfilPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
-                      'Por favor, selecione um objetivo antes de continuar.'),
+                      'Por favor, selecione um objetivo antes de continuar.',
+                      textAlign: TextAlign.center,
+                      style: 
+                      TextStyle(
+                        color: Colors.red,
+                        )
+                      ),
+                  backgroundColor: Colors.transparent,
                 ),
               );
             }

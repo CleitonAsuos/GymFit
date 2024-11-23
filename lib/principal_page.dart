@@ -250,70 +250,37 @@ class PrincipalPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                Icon(
-                  Icons.fitness_center,
-                  size: 24,
-                  color: Colors.black,
-                ),
-                Icon(
-                  Icons.fitness_center,
-                  size: 24,
-                  color: Colors.white,
-                ),
-              ],
-            ),
+            icon: Icon(Icons.fitness_center),
             label: 'Exercício',
           ),
           BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                Icon(
-                  Icons.restaurant,
-                  size: 24,
-                  color: Colors.black,
-                ),
-                Icon(
-                  Icons.restaurant,
-                  size: 24,
-                  color: Colors.white,
-                ),
-              ],
-            ),
+            icon: Icon(Icons.restaurant),
             label: 'Alimentação',
           ),
           BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                Icon(
-                  Icons.person,
-                  size: 24,
-                  color: Colors.white,
-                ),
-                Icon(
-                  Icons.person,
-                  size: 24,
-                  color: Colors.white,
-                ),
-              ],
-            ),
+            icon: Icon(Icons.person),
             label: 'Perfil',
           ),
         ],
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.black,
-        selectedLabelStyle: const TextStyle(
-          color: Colors.white,
-        ),
-        unselectedLabelStyle: const TextStyle(
-          color: Colors.white,
-        ),
         onTap: (index) {
-          if (index == 1) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ExercicioPage(
+                  nivelCondicionamento: store.nivelCondicionamento,
+                  frequencia: store.frequencia,
+                  objetivo: store.objetivo,
+                  nivelCondicionamentoTexto: store.nivelCondicionamentoLabel,
+                ),
+              ),
+            );
+          } else if (index == 1) {
             if (store.objetivo.isNotEmpty) {
               Navigator.push(
                 context,
@@ -325,21 +292,29 @@ class PrincipalPage extends StatelessWidget {
               // Mostrar uma mensagem de erro ou alerta
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Por favor, selecione um objetivo antes de continuar.'),
+                  content: Text(
+                      'Por favor, selecione um objetivo antes de continuar.',
+                      textAlign: TextAlign.center,
+                      style: 
+                      TextStyle(
+                        color: Colors.red,
+                        )
+                      ),
+                  backgroundColor: Colors.transparent,
                 ),
               );
-            }
+            } 
           } else if (index == 2) {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => PerfilPage(
-                  nome: 'Nome Exemplo', // Substitua pelos dados reais
-                  idade: 25, // Substitua pelos dados reais
-                  sexo: 'Masculino', // Substitua pelos dados reais
-                  peso: 70.0, // Substitua pelos dados reais
-                  altura: 1.75, // Substitua pelos dados reais
-                  objetivo: store.objetivo, // Use o objetivo do store
+                  nome: 'Nome Exemplo',
+                  idade: 25,
+                  sexo: 'Masculino',
+                  peso: 70.0,
+                  altura: 1.75,
+                  objetivo: store.objetivo,
                 ),
               ),
             );

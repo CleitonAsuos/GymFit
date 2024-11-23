@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:gymfit_projeto/alimentacao_page.dart';
+import 'package:gymfit_projeto/perfil_page.dart';
 import 'exercicio_store.dart';
 
 class ExercicioPage extends StatelessWidget {
@@ -7,7 +9,9 @@ class ExercicioPage extends StatelessWidget {
   final double frequencia;
   final String objetivo;
 
-  const ExercicioPage({
+  final ExercicioStore store = ExercicioStore();
+
+  ExercicioPage({
     Key? key,
     required this.nivelCondicionamento,
     required this.frequencia,
@@ -96,6 +100,78 @@ class ExercicioPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fitness_center),
+            label: 'Exercício',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant),
+            label: 'Alimentação',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
+        ],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.black,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ExercicioPage(
+                  nivelCondicionamento: store.nivelCondicionamento,
+                  frequencia: store.frequencia,
+                  objetivo: store.objetivo,
+                  nivelCondicionamentoTexto: nivelCondicionamentoTexto,
+                ),
+              ),
+            );
+          } else if (index == 1) {
+            if (store.objetivo.isNotEmpty) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AlimentacaoPage(objetivo: store.objetivo),
+                ),
+              );
+            } else {
+              // Mostrar uma mensagem de erro ou alerta
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                      'Por favor, selecione um objetivo antes de continuar.',
+                      textAlign: TextAlign.center,
+                      style: 
+                      TextStyle(
+                        color: Colors.red,
+                        )
+                      ),
+                  backgroundColor: Colors.transparent,
+                ),
+              );
+            } 
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PerfilPage(
+                  nome: 'Nome Exemplo',
+                  idade: 25,
+                  sexo: 'Masculino',
+                  peso: 70.0,
+                  altura: 1.75,
+                  objetivo: store.objetivo,
+                ),
+              ),
+            );
+          }
+        },
       ),
     );
   }

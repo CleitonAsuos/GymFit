@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gymfit_projeto/exercicio_page.dart';
 import 'perfil_page.dart';
 
 class AlimentacaoPage extends StatelessWidget {
@@ -350,7 +351,17 @@ class AlimentacaoPage extends StatelessWidget {
         backgroundColor: Colors.black,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ExercicioPage(
+                  nivelCondicionamento: 2.0, // Replace with actual data
+                  frequencia: 3.0, // Replace with actual data
+                  objetivo: objetivo,
+                  nivelCondicionamentoTexto: 'Intermediário', // Replace with actual data
+                ),
+              ),
+            );
           } else if (index == 2) {
             Navigator.push(
               context,
