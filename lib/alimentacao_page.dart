@@ -359,6 +359,7 @@ class AlimentacaoPage extends StatelessWidget {
                   frequencia: 3.0, // Replace with actual data
                   objetivo: objetivo,
                   nivelCondicionamentoTexto: 'Intermediário', // Replace with actual data
+                  divisaoDeTreino: 'Divisão Exemplo', // Replace with actual data
                 ),
               ),
             );

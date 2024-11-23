@@ -199,7 +199,7 @@ class PerfilPage extends StatelessWidget {
                   nivelCondicionamento: 2.0, // Replace with actual data
                   frequencia: 3.0, // Replace with actual data
                   objetivo: objetivo,
-                  nivelCondicionamentoTexto: 'Intermediário', // Replace with actual data
+                  nivelCondicionamentoTexto: 'Intermediário', divisaoDeTreino: '', // Replace with actual data
                 ),
               ),
             );

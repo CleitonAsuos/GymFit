@@ -17,13 +17,10 @@ class PrincipalPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
-          onPressed: () {
-             Navigator.pushReplacement(
+          onPressed: () => Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => Loginpage()),
-            );
-          },
-        ),
+            )),
         title: Text("GYMFIT"),
         titleTextStyle: TextStyle(
           color: Colors.white,
@@ -215,12 +212,12 @@ class PrincipalPage extends StatelessWidget {
                   shadowColor: Colors.transparent,
                 ),
                 onPressed: () {
-                  // Acessar os valores dos sliders e checkboxes
                   double nivelCondicionamento = store.nivelCondicionamento;
                   double frequencia = store.frequencia;
                   String objetivo = store.objetivo;
 
-                  // Navegar para a ExercicioPage passando os valores
+                  String divisaoDeTreino = obterDivisaoDeTreino(nivelCondicionamento, frequencia, objetivo);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -229,6 +226,7 @@ class PrincipalPage extends StatelessWidget {
                         frequencia: frequencia,
                         objetivo: objetivo,
                         nivelCondicionamentoTexto: store.nivelCondicionamentoLabel,
+                        divisaoDeTreino: divisaoDeTreino,
                       ),
                     ),
                   );
@@ -276,7 +274,7 @@ class PrincipalPage extends StatelessWidget {
                   nivelCondicionamento: store.nivelCondicionamento,
                   frequencia: store.frequencia,
                   objetivo: store.objetivo,
-                  nivelCondicionamentoTexto: store.nivelCondicionamentoLabel,
+                  nivelCondicionamentoTexto: store.nivelCondicionamentoLabel, divisaoDeTreino: '',
                 ),
               ),
             );
@@ -323,4 +321,38 @@ class PrincipalPage extends StatelessWidget {
       ),
     );
   }
+}
+// Adicione esta função para obter a divisão de treino com base nas combinações
+String obterDivisaoDeTreino(double nivelCondicionamento, double frequencia, String objetivo) {
+  // Nível Iniciante
+  if (nivelCondicionamento == 0) {
+    if (frequencia == 0 && objetivo == 'Melhorar condicionamento') {
+      return 'Plano de Treino para Iniciantes\n\nDia 1: Treino de Corpo Inteiro\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com peso corporal: 3 séries de 12 repetições\nFlexão de braço: 3 séries de 10 repetições\nRemada com halteres: 3 séries de 12 repetições\nAbdominais: 3 séries de 15 repetições\nPrancha: 3 séries de 30 segundos\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Cardio e Mobilidade\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nMobilidade\nAlongamentos dinâmicos para todo o corpo: 10-15 minutos\n\nDia 3 (Opcional): Treino de Força e Cardio Leve\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nLevantamento terra com halteres: 3 séries de 12 repetições\nPressão de ombro com halteres: 3 séries de 12 repetições\nElevação lateral de halteres: 3 séries de 15 repetições\nAbdominais bicicleta: 3 séries de 20 repetições\n\nCardio Leve\nCaminhada rápida na esteira: 15-20 minutos';
+    } else if (frequencia == 1 && objetivo == 'Ganhar massa muscular') {
+      return 'Plano de Treino para Iniciantes\n\nDia 1: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com halteres: 3 séries de 12 repetições\nSupino com halteres: 3 séries de 12 repetições\nRemada curvada com halteres: 3 séries de 12 repetições\nElevação lateral de halteres: 3 séries de 15 repetições\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)\n\nDia 3: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nLevantamento terra com halteres: 3 séries de 12 repetições\nPressão de ombro com halteres: 3 séries de 12 repetições\nFlexão de braço: 3 séries de 10 repetições\nAbdominais: 3 séries de 15 repetições\n\nAlongamento (5-10 minutos)';
+    } else if (frequencia == 2 && objetivo == 'Perder peso') {
+      return 'Plano de Treino para Iniciantes\n\nDia 1: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com peso corporal: 3 séries de 12 repetições\nFlexão de braço: 3 séries de 10 repetições\nRemada com halteres: 3 séries de 12 repetições\nAbdominais: 3 séries de 15 repetições\n\nAlongamento (5-10 minutos)\n\nDia 3: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)';
+    }
+  }
+  // Nível Intermediário
+  else if (nivelCondicionamento == 1) {
+    if (frequencia == 0 && objetivo == 'Melhorar condicionamento') {
+      return 'Plano de Treino Intermediário\n\nDia 1: Treino de Corpo Inteiro\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com barra: 4 séries de 10 repetições\nSupino reto: 4 séries de 10 repetições\nRemada curvada: 4 séries de 10 repetições\nAbdominais: 4 séries de 15 repetições\nPrancha: 4 séries de 30 segundos\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Cardio e Mobilidade\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nMobilidade\nAlongamentos dinâmicos para todo o corpo: 10-15 minutos\n\nDia 3 (Opcional): Treino de Força e Cardio Leve\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nLevantamento terra: 4 séries de 10 repetições\nPressão de ombro: 4 séries de 10 repetições\nElevação lateral: 4 séries de 15 repetições\nAbdominais bicicleta: 4 séries de 20 repetições\n\nCardio Leve\nCaminhada rápida na esteira: 15-20 minutos';
+    } else if (frequencia == 1 && objetivo == 'Ganhar massa muscular') {
+      return 'Plano de Treino Intermediário\n\nDia 1: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com barra: 4 séries de 10 repetições\nSupino reto: 4 séries de 10 repetições\nRemada curvada: 4 séries de 10 repetições\nElevação lateral: 4 séries de 15 repetições\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)\n\nDia 3: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nLevantamento terra: 4 séries de 10 repetições\nPressão de ombro: 4 séries de 10 repetições\nFlexão de braço: 4 séries de 10 repetições\nAbdominais: 4 séries de 15 repetições\n\nAlongamento (5-10 minutos)';
+    } else if (frequencia == 2 && objetivo == 'Perder peso') {
+      return 'Plano de Treino Intermediário\n\nDia 1: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com barra: 4 séries de 10 repetições\nFlexão de braço: 4 séries de 10 repetições\nRemada curvada: 4 séries de 10 repetições\nAbdominais: 4 séries de 15 repetições\n\nAlongamento (5-10 minutos)\n\nDia 3: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)';
+    }
+  }
+  // Nível Avançado
+  else if (nivelCondicionamento == 2) {
+    if (frequencia == 0 && objetivo == 'Melhorar condicionamento') {
+      return 'Plano de Treino Avançado\n\nDia 1: Treino de Corpo Inteiro\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com barra: 5 séries de 8 repetições\nSupino inclinado: 5 séries de 8 repetições\nRemada curvada: 5 séries de 8 repetições\nAbdominais: 5 séries de 15 repetições\nPrancha: 5 séries de 30 segundos\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Cardio e Mobilidade\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nMobilidade\nAlongamentos dinâmicos para todo o corpo: 10-15 minutos\n\nDia 3 (Opcional): Treino de Força e Cardio Leve\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nLevantamento terra: 5 séries de 8 repetições\nPressão de ombro: 5 séries de 8 repetições\nElevação lateral: 5 séries de 15 repetições\nAbdominais bicicleta: 5 séries de 20 repetições\n\nCardio Leve\nCaminhada rápida na esteira: 15-20 minutos';
+    } else if (frequencia == 1 && objetivo == 'Ganhar massa muscular') {
+      return 'Plano de Treino Avançado\n\nDia 1: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com barra: 5 séries de 8 repetições\nSupino inclinado: 5 séries de 8 repetições\nRemada curvada: 5 séries de 8 repetições\nElevação lateral: 5 séries de 15 repetições\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)\n\nDia 3: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nLevantamento terra: 5 séries de 8 repetições\nPressão de ombro: 5 séries de 8 repetições\nFlexão de braço: 5 séries de 10 repetições\nAbdominais: 5 séries de 15 repetições\n\nAlongamento (5-10 minutos)';
+    } else if (frequencia == 2 && objetivo == 'Perder peso') {
+      return 'Plano de Treino Avançado\n\nDia 1: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)\n\nDia 2: Treino de Força\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nExercícios Principais\nAgachamento com barra: 5 séries de 8 repetições\nFlexão de braço: 5 séries de 10 repetições\nRemada curvada: 5 séries de 8 repetições\nAbdominais: 5 séries de 15 repetições\n\nAlongamento (5-10 minutos)\n\nDia 3: Treino de Cardio\nAquecimento (5-10 minutos)\nCaminhada ou corrida leve na esteira\n\nCardio\nBicicleta ergométrica: 20-30 minutos em ritmo moderado\n\nAlongamento (5-10 minutos)';
+    }
+  }
+  return 'Divisão de treino não encontrada para a combinação fornecida.';
 }
