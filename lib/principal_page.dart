@@ -328,12 +328,6 @@ class MainPage extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => PerfilPage(
-                  nome: 'Nome Exemplo', // Substitua pelos dados reais
-                  idade: 25, // Substitua pelos dados reais
-                  sexo: 'Masculino', // Substitua pelos dados reais
-                  peso: 70.0, // Substitua pelos dados reais
-                  altura: 1.75, // Substitua pelos dados reais
-                  objetivo: store.objetivo, // Use o objetivo do store
                 ),
               ),
             );

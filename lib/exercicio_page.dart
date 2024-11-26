@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:gymfit_projeto/alimentacao_page.dart';
+import 'package:gymfit_projeto/perfil_page.dart';
 import 'exercicio_store.dart';
 
 class ExercicioPage extends StatelessWidget {
@@ -167,6 +169,48 @@ class ExercicioPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+            bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fitness_center),
+            label: 'Exercício',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant),
+            label: 'Alimentação',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
+        ],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        backgroundColor: Colors.black,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pop(context);
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AlimentacaoPage(
+                  objetivo: objetivo,
+                ),
+              ),
+            );
+          }
+          else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PerfilPage(
+                ),
+              ),
+            );
+          }
+        },
       ),
     );
   }

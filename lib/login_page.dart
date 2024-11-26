@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:gymfit_projeto/principal_page.dart';
+import 'database_helper.dart';
+import 'user.dart';
+import 'principal_page.dart';
 import 'cadastro_page.dart';
-import 'principal_page.dart'; // Add this import statement
-import 'recuperar_senha.dart'; // Add this import statement
+import 'recuperar_senha.dart';
 
-class Loginpage extends StatelessWidget {
-  const Loginpage({super.key});
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final DatabaseHelper _dbHelper = DatabaseHelper.instance;
+
+  void _login() async {
+    String username = _usernameController.text;
+    String password = _passwordController.text;
+
+    List<Map<String, dynamic>> users = await _dbHelper.getUsers();
+    bool userExists = users.any((user) =>
+        user['username'] == username && user['password'] == password);
+
+    if (userExists) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MainPage()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Usuário ou senha incorretos')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +46,7 @@ class Loginpage extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.indigo,const Color.fromARGB(255, 0, 5, 55)],
+            colors: [Colors.indigo, const Color.fromARGB(255, 0, 5, 55)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -38,10 +66,9 @@ class Loginpage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: 50),
             TextFormField(
+              controller: _usernameController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -55,14 +82,14 @@ class Loginpage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
-                    width: 2.0, // Define a espessura da borda quando não focado
+                    width: 2.0,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.white,
-                    width: 2.0, // Define a espessura da borda quando focado
+                    width: 2.0,
                   ),
                 ),
                 labelText: "E-mail",
@@ -71,15 +98,11 @@ class Loginpage extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
+              style: TextStyle(color: Colors.white, fontSize: 16),
             ),
-            SizedBox(
-              height: 25,
-            ),
+            SizedBox(height: 25),
             TextFormField(
+              controller: _passwordController,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
@@ -87,21 +110,21 @@ class Loginpage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
-                    width: 2.0, // Define a espessura da borda
+                    width: 2.0,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.grey,
-                    width: 2.0, // Define a espessura da borda quando não focado
+                    width: 2.0,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(
                     color: Colors.white,
-                    width: 2.0, // Define a espessura da borda quando focado
+                    width: 2.0,
                   ),
                 ),
                 labelText: "Senha",
@@ -110,10 +133,7 @@ class Loginpage extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
+              style: TextStyle(color: Colors.white, fontSize: 16),
             ),
             Container(
               height: 40,
@@ -122,23 +142,17 @@ class Loginpage extends StatelessWidget {
                 child: Text(
                   "Recuperar Senha",
                   textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => RecuperarSenha(),
-                    ),
+                    MaterialPageRoute(builder: (context) => RecuperarSenha()),
                   );
                 },
               ),
             ),
-            SizedBox(
-              height: 40,
-            ),
+            SizedBox(height: 40),
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
@@ -148,9 +162,7 @@ class Loginpage extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                 ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(30)),
               ),
               child: SizedBox.expand(
                 child: TextButton(
@@ -162,40 +174,27 @@ class Loginpage extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainPage(),
-                      ),
-                    ),
-                  },
+                  onPressed: _login,
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Container(
-                height: 40,
-                child: TextButton(
-                  child: Text(
-                    "Cadastre-se",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CadastroPage(),
-                      ),
-                    );
-                  },
-                ))
+              height: 40,
+              child: TextButton(
+                child: Text(
+                  "Cadastre-se",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CadastroPage()),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

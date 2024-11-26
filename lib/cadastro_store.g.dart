@@ -147,6 +147,23 @@ mixin _$CadastroStore on _CadastroStore, Store {
     });
   }
 
+  late final _$nivelCondicionamentoAtom =
+      Atom(name: '_CadastroStore.nivelCondicionamento', context: context);
+
+  @override
+  String get nivelCondicionamento {
+    _$nivelCondicionamentoAtom.reportRead();
+    return super.nivelCondicionamento;
+  }
+
+  @override
+  set nivelCondicionamento(String value) {
+    _$nivelCondicionamentoAtom.reportWrite(value, super.nivelCondicionamento,
+        () {
+      super.nivelCondicionamento = value;
+    });
+  }
+
   late final _$_CadastroStoreActionController =
       ActionController(name: '_CadastroStore', context: context);
 
@@ -250,6 +267,17 @@ mixin _$CadastroStore on _CadastroStore, Store {
   }
 
   @override
+  void setNivelCondicionamento(String value) {
+    final _$actionInfo = _$_CadastroStoreActionController.startAction(
+        name: '_CadastroStore.setNivelCondicionamento');
+    try {
+      return super.setNivelCondicionamento(value);
+    } finally {
+      _$_CadastroStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 nome: ${nome},
@@ -260,7 +288,8 @@ altura: ${altura},
 objetivo: ${objetivo},
 email: ${email},
 senha: ${senha},
-confirmacaoSenha: ${confirmacaoSenha}
+confirmacaoSenha: ${confirmacaoSenha},
+nivelCondicionamento: ${nivelCondicionamento}
     ''';
   }
 }

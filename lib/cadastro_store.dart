@@ -1,5 +1,4 @@
 import 'package:mobx/mobx.dart';
-
 part 'cadastro_store.g.dart';
 
 class CadastroStore = _CadastroStore with _$CadastroStore;
@@ -32,30 +31,56 @@ abstract class _CadastroStore with Store {
   @observable
   String confirmacaoSenha = '';
 
-  @action
-  void setNome(String value) => nome = value;
+  @observable
+  String nivelCondicionamento = '';
 
   @action
-  void setIdade(int value) => idade = value;
+  void setNome(String value) {
+    nome = value;
+  }
 
   @action
-  void setSexo(String? value) => sexo = value!;
+  void setIdade(int value) {
+    idade = value;
+  }
 
   @action
-  void setPeso(double value) => peso = value;
+  void setSexo(String? value) {
+    sexo = value ?? '';
+  }
 
   @action
-  void setAltura(double value) => altura = value;
+  void setPeso(double value) {
+    peso = value;
+  }
 
   @action
-  void setObjetivo(String value) => objetivo = value;
+  void setAltura(double value) {
+    altura = value;
+  }
 
   @action
-  void setEmail(String value) => email = value;
+  void setObjetivo(String value) {
+    objetivo = value;
+  }
 
   @action
-  void setSenha(String value) => senha = value;
+  void setEmail(String value) {
+    email = value;
+  }
 
   @action
-  void setConfirmacaoSenha(String value) => confirmacaoSenha = value;
+  void setSenha(String value) {
+    senha = value;
+  }
+
+  @action
+  void setConfirmacaoSenha(String value) {
+    confirmacaoSenha = value;
+  }
+
+  @action
+  void setNivelCondicionamento(String value) {
+    nivelCondicionamento = value;
+  }
 }
